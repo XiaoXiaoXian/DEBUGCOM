@@ -1,5 +1,13 @@
 package sample;
 
+
+/**
+ * Project: 入口类
+ * Author : zhaozhen
+ * Email  : 2399144252@qq.com
+ * Date   : 2019/6/2
+ */
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

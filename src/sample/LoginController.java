@@ -1,5 +1,12 @@
 package sample;
 
+/**
+ * Project: 登陆
+ * Author : zhaozhen
+ * Email  : 2399144252@qq.com
+ * Date   : 2019/6/2
+ */
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
