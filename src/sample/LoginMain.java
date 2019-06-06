@@ -26,6 +26,7 @@ public class LoginMain extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.getIcons().add(new Image("file:logo2.png"));
         primaryStage.show();
+
     }
 
 
