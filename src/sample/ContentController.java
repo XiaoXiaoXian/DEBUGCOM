@@ -47,6 +47,12 @@ public class ContentController {
     //串口对象
     private SerialPort serialPort;
 
+    //接收数据量
+    private int reveiveBytes = 0;
+
+    //发送数据量
+    private int sendBytes = 0;
+
 
     //当前串口状态
     private Boolean currentComStatus = false;
@@ -271,12 +277,12 @@ public class ContentController {
 
 
         //调试信息显示
-        debug_info.setText("显示调试信息");
+        debug_info.setText("debug info");
 
         //接受数据
-        debug_receive_bytes.setText("接收: 19528Bytes");
+        debug_receive_bytes.setText(reveiveBytes + "");
         //显示数据
-        debug_send_bytes.setText("发送: 12354Bytes");
+        debug_send_bytes.setText(sendBytes + "");
         //接受面板
         //debug_receive_data.setText("EF 00 01 65 E8");
     }
@@ -310,7 +316,7 @@ public class ContentController {
             /**
              * 设置数据监听
              */
-            mySerialPort.setListenerToSerialPort(serialPort , debug_receive_data , currentReceiveType);
+            mySerialPort.setListenerToSerialPort(serialPort , debug_receive_data , currentReceiveType , debug_receive_bytes);
             debug_info.setText(currentCom  + " " + "is opened");
         } catch (Exception e) {
             debug_info.setText(currentCom  + " " + e.getMessage());
@@ -335,6 +341,7 @@ public class ContentController {
     protected void sendData(){
         if(!debug_send_data.equals(null)){
             sendInfo = debug_send_data.getText();
+            debug_send_bytes.setText(Integer.valueOf(debug_send_bytes.getText()) + sendInfo.getBytes().length + "");
             if(currentSendType.equals("Hex")){
                 mySerialPort.sendData(serialPort , NumberConversion.hex2byte(sendInfo));
             }else{
