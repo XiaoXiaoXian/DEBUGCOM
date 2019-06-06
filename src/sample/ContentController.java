@@ -1,6 +1,8 @@
 package sample;
 
 import gnu.io.SerialPort;
+import gnu.io.SerialPortEvent;
+import gnu.io.SerialPortEventListener;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,7 +23,7 @@ import java.util.regex.Pattern;
  * Email  : 2399144252@qq.com
  * Date   : 2019/6/2
  */
-public class ContentController {
+public class ContentController{
 
     private String currentCom = "COM1";
     private String currentBaudRate = "9600";
@@ -43,9 +45,9 @@ public class ContentController {
     private String receiveInfo = null;
 
     //串口工具类实例
-    private MySerialPort mySerialPort;
+    private MySerialPort mySerialPort = null;
     //串口对象
-    private SerialPort serialPort;
+    private SerialPort serialPort = null;
 
     //接收数据量
     private int reveiveBytes = 0;
@@ -176,6 +178,14 @@ public class ContentController {
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
                 currentReceiveType = newValue.getUserData().toString();
+
+                /**
+                 * 更新接收监听
+                 */
+                if(serialPort != null && mySerialPort != null){
+                    mySerialPort.setListenerToSerialPort(serialPort , debug_receive_data , currentReceiveType , debug_receive_bytes);
+                }
+
                 Log.cout(currentReceiveType);
             }
         });
@@ -366,4 +376,7 @@ public class ContentController {
         Pattern pattern = Pattern.compile("^[1-9][-\\+]?[\\d]*$");
         return pattern.matcher(str).matches();
     }
+
+
+
 }

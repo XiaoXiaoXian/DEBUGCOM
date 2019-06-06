@@ -25,6 +25,8 @@ public class MySerialPort {
 
     private byte[] lastReadBytes = null;
 
+    SerialPortEventListener listener = null;
+
     public static void main(String[] args) {
 //
 //        Scanner scanner = new Scanner(System.in);
@@ -255,9 +257,11 @@ public class MySerialPort {
     public void setListenerToSerialPort(SerialPort serialPort , TextArea textArea , String receiveType , Text debug_receive_bytes) {
         try {
             /**
-             * 设置监听
+             * 清空并设置监听
              */
-            SerialPortEventListener listener = new SerialPortEventListener() {
+             serialPort.removeEventListener();
+
+             listener = new SerialPortEventListener() {
                 @Override
                 public void serialEvent(SerialPortEvent serialPortEvent) {
                     if(serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {//数据通知
