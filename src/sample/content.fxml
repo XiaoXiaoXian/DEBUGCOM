@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ContentController">
+    <top>
+        <VBox prefHeight="76.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <Pane prefHeight="27.0" prefWidth="600.0" style="-fx-background-color: white;">
+                    <children>
+                        <MenuBar style="-fx-background-color: white;">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="File">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Close" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Edit">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Delete" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Help">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="About" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                        </MenuBar>
+                    </children>
+                </Pane>
+                <ToolBar prefHeight="48.0" prefWidth="600.0">
+                    <items>
+                        <Button fx:id="btn_starting" mnemonicParsing="false" onAction="#start" prefHeight="30.0" prefWidth="30.0"  text="▶" />
+                        <Button fx:id="btn_running" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0"  text="⏸" />
+                        <Button fx:id="btn_stopping" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0"  text="⏹" />
+                        <Button fx:id="btn_clear" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0"  text="🗑" />
+                    </items>
+                </ToolBar>
+            </children>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+        </VBox>
+    </top>
+    <left>
+        <VBox prefHeight="506.0" prefWidth="215.0" BorderPane.alignment="CENTER">
+            <children>
+                <TitledPane animated="false" prefHeight="217.0" prefWidth="215.0" style="-fx-collapsible: false" text="串口设置">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="160.0">
+                            <children>
+                                <Label layoutX="16.0" layoutY="14.0" text="串  口" />
+                                <ComboBox fx:id="attr_com" layoutX="59.0" layoutY="10.0" prefHeight="22.0" prefWidth="130.0" promptText="COM1">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="COM1" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Label layoutX="16.0" layoutY="43.0" text="波特率" />
+                                <ComboBox fx:id="attr_baud_rate" layoutX="59.0" layoutY="39.0" prefHeight="22.0" prefWidth="130.0" promptText="9600">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="9600" />
+                                            <String fx:value="19200" />
+                                            <String fx:value="38400" />
+                                            <String fx:value="57600" />
+                                            <String fx:value="115200" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Label layoutX="16.0" layoutY="70.0" text="数据位" />
+                                <ComboBox fx:id="attr_data_bit" layoutX="59.0" layoutY="68.0" prefHeight="22.0" prefWidth="130.0" promptText="8">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="8" />
+                                            <String fx:value="7" />
+                                            <String fx:value="6" />
+                                            <String fx:value="5" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Label layoutX="16.0" layoutY="99.0" text="校验位" />
+                                <ComboBox fx:id="attr_check_bit" layoutX="59.0" layoutY="95.0" prefHeight="23.0" prefWidth="130.0" promptText="None">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="None" />
+                                            <String fx:value="Even" />
+                                            <String fx:value="Odd" />
+                                            <String fx:value="Mark" />
+                                            <String fx:value="Space" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Label layoutX="17.0" layoutY="127.0" text="停止位" />
+                                <ComboBox fx:id="attr_stop_bit" layoutX="59.0" layoutY="123.0" prefHeight="23.0" prefWidth="131.0" promptText="1">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="1" />
+                                            <String fx:value="1.5" />
+                                            <String fx:value="2" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Label layoutX="17.0" layoutY="155.0" text="流  控" />
+                                <ComboBox fx:id="attr_stream_control" layoutX="59.0" layoutY="151.0" prefHeight="23.0" prefWidth="131.0" promptText="None">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="None" />
+                                            <String fx:value="RTS/CTS" />
+                                            <String fx:value="XON/XOFF" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" prefHeight="161.0" prefWidth="215.0" style="-fx-collapsible: false" text="接收设置">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="122.0" prefWidth="213.0">
+                            <children>
+                                <!-- <fx:define>-->
+                                <!-- <ToggleGroup fx:id="sendType" />-->
+                                <!-- </fx:define>-->
+                                <RadioButton layoutX="38.0" layoutY="14.0" mnemonicParsing="false" selected="true" text="ASCII" userData="ASCII">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="receive_type" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton layoutX="114.0" layoutY="14.0" mnemonicParsing="false" text="Hex" toggleGroup="$receive_type" userData="Hex" />
+                                <CheckBox fx:id="set_receive_auto_enter" layoutX="38.0" layoutY="45.0" mnemonicParsing="false" text="自动换行" />
+                                <CheckBox fx:id="set_receive_show_send_info" layoutX="38.0" layoutY="68.0" mnemonicParsing="false" text="显示发送" />
+                                <CheckBox fx:id="set_receive_show_time" layoutX="38.0" layoutY="92.0" mnemonicParsing="false" text="显示时间" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" prefHeight="123.0" prefWidth="215.0" style="-fx-collapsible: false" text="发送设置">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="105.0" prefWidth="213.0">
+                            <children>
+                                <!--<fx:define>-->
+                                <!--<ToggleGroup fx:id="receiveType" />-->
+                                <!--</fx:define>-->
+                                <RadioButton layoutX="38.0" layoutY="14.0" mnemonicParsing="false" selected="true" text="ASCII" userData="ASCII">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="send_type" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton layoutX="114.0" layoutY="14.0" mnemonicParsing="false" text="Hex" toggleGroup="$send_type" userData="Hex" />
+                                <CheckBox fx:id="set_foreach_send" layoutX="38.0" layoutY="42.0" mnemonicParsing="false" text="重复发送" />
+                                <TextField fx:id="set_foreach_send_time" layoutX="38.0" layoutY="66.0" prefHeight="25.0" prefWidth="110.0" />
+                                <Text layoutX="128.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ms" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+            </children>
+
+            <BorderPane.margin>
+                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+            </BorderPane.margin>
+        </VBox>
+    </left>
+    <bottom>
+        <HBox prefHeight="17.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <Text fx:id="debug_info" strokeType="OUTSIDE" strokeWidth="0.0" text="CLOSED" wrappingWidth="283.240234375">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+                </Text>
+                <Separator orientation="VERTICAL" prefHeight="18.0" prefWidth="0.0" />
+                <Text fx:id="debug_receive_bytes" strokeType="OUTSIDE" strokeWidth="0.0" text="接受：0 Bytes" textAlignment="CENTER" wrappingWidth="270.240234375">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+                <Separator orientation="VERTICAL" prefHeight="200.0" />
+                <Text fx:id="debug_send_bytes" strokeType="OUTSIDE" strokeWidth="0.0" text="发送：0 Bytes" textAlignment="CENTER" wrappingWidth="220.240234375">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+            </children>
+            <padding>
+                <Insets right="2.0" top="2.0" />
+            </padding>
+        </HBox>
+    </bottom>
+    <center>
+        <VBox prefHeight="440.0" prefWidth="585.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox prefHeight="518.0" prefWidth="585.0">
+                    <children>
+                        <TextArea fx:id="debug_receive_data" editable="false" prefHeight="375.0" prefWidth="585.0"  wrapText="true">
+                            <padding>
+                                <Insets top="5.0" />
+                            </padding>
+                        </TextArea>
+                    </children>
+                </VBox>
+                <VBox prefHeight="290.0" prefWidth="585.0">
+                    <children>
+                        <HBox prefHeight="145.0" prefWidth="585.0">
+                            <children>
+                                <Pane prefHeight="145.0" prefWidth="450.0">
+                                    <children>
+                                        <TextArea fx:id="debug_send_data" layoutY="-1.0" prefHeight="139.0" prefWidth="417.0" promptText="输入要发送的数据..." wrapText="true">
+                                            <padding>
+                                                <Insets top="2.0" />
+                                            </padding>
+                                        </TextArea>
+                                    </children>
+                                </Pane>
+                                <Pane prefHeight="200.0" prefWidth="200.0">
+                                    <children>
+                                        <Button fx:id="btn_debug_send" layoutX="57.0" layoutY="61.0" mnemonicParsing="false" onAction="#send" text="打开" />
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Pane>
+                            </children>
+                        </HBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="3.0" />
+                    </VBox.margin>
+                </VBox>
+                <Separator prefWidth="200.0" />
+            </children>
+        </VBox>
+    </center>
+    <right>
+        <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+    </right>
+</BorderPane>
