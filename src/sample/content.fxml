@@ -4,7 +4,6 @@
 <!--Author : zhaozhen-->
 <!--Date : 2019.6.2-->
 
-
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -59,10 +58,10 @@
                 </Pane>
                 <ToolBar prefHeight="48.0" prefWidth="600.0">
                     <items>
-                        <Button fx:id="btn_starting" mnemonicParsing="false" onAction="#start" prefHeight="30.0" prefWidth="30.0"  text="▶" />
-                        <Button fx:id="btn_running" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0"  text="⏸" />
-                        <Button fx:id="btn_stopping" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0"  text="⏹" />
-                        <Button fx:id="btn_clear" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0"  text="🗑" />
+                        <Button fx:id="btn_starting" mnemonicParsing="false" onAction="#start" prefHeight="30.0" prefWidth="30.0" text="▶" />
+                        <Button fx:id="btn_running" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="⏸" />
+                        <Button fx:id="btn_stopping" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="⏹" />
+                        <Button fx:id="btn_clear" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="🗑" />
                     </items>
                 </ToolBar>
             </children>
@@ -193,7 +192,7 @@
         </VBox>
     </left>
     <bottom>
-        <HBox prefHeight="17.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <HBox prefHeight="20.0" prefWidth="729.0" BorderPane.alignment="CENTER">
             <children>
                 <Text fx:id="debug_info" strokeType="OUTSIDE" strokeWidth="0.0" text="CLOSED" wrappingWidth="283.240234375">
                     <font>
@@ -204,17 +203,21 @@
                </HBox.margin>
                 </Text>
                 <Separator orientation="VERTICAL" prefHeight="18.0" prefWidth="0.0" />
-                <Text fx:id="debug_receive_bytes" strokeType="OUTSIDE" strokeWidth="0.0" text="接受：0 Bytes" textAlignment="CENTER" wrappingWidth="270.240234375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="接收：" />
+                <Text fx:id="debug_receive_bytes" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="32.240234375">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bytes" wrappingWidth="142.71484375" />
                 <Separator orientation="VERTICAL" prefHeight="200.0" />
-                <Text fx:id="debug_send_bytes" strokeType="OUTSIDE" strokeWidth="0.0" text="发送：0 Bytes" textAlignment="CENTER" wrappingWidth="220.240234375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="发送：" />
+                <Text fx:id="debug_send_bytes" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="51.240234375">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bytes" wrappingWidth="177.71484375" />
             </children>
             <padding>
                 <Insets right="2.0" top="2.0" />
@@ -226,7 +229,7 @@
             <children>
                 <VBox prefHeight="518.0" prefWidth="585.0">
                     <children>
-                        <TextArea fx:id="debug_receive_data" editable="false" prefHeight="375.0" prefWidth="585.0"  wrapText="true">
+                        <TextArea fx:id="debug_receive_data" editable="false" prefHeight="375.0" prefWidth="585.0" wrapText="true">
                             <padding>
                                 <Insets top="5.0" />
                             </padding>

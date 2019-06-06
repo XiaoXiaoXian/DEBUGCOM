@@ -15,4 +15,8 @@ public class Log {
     public static void cout(Boolean b){
         System.out.println(b);
     }
+
+    public static void main(String[] args) {
+        System.out.println(7 + 8 + "");
+    }
 }

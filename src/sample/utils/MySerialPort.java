@@ -2,6 +2,7 @@ package sample.utils;
 
 import gnu.io.*;
 import javafx.scene.control.TextArea;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -251,7 +252,7 @@ public class MySerialPort {
     /**
      * 设置串口监听 此处使用回调最为合理
      */
-    public void setListenerToSerialPort(SerialPort serialPort , TextArea textArea , String receiveType) {
+    public void setListenerToSerialPort(SerialPort serialPort , TextArea textArea , String receiveType , Text debug_receive_bytes) {
         try {
             /**
              * 设置监听
@@ -261,6 +262,7 @@ public class MySerialPort {
                 public void serialEvent(SerialPortEvent serialPortEvent) {
                     if(serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {//数据通知
                         byte[] bytes = readData(serialPort);
+                        debug_receive_bytes.setText((Integer.valueOf(debug_receive_bytes.getText()) + bytes.length) + "");
                         setLastReadBytes(bytes);
                         if(receiveType.equals("Hex")){
                             setLastReadData(NumberConversion.bytesToHexString(bytes));
