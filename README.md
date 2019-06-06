@@ -14,5 +14,7 @@ a software made by java and you can debug the serial ports of your program using
 
 3.It can be use in your projects based on Win , CentOs and Mac by choose the right jre(jdk).
 
-4.In fact , it based on RXTXcomm.jar to communicate with com.
+4.In fact , it based on RXTXcomm.jar to communicate with com , so you must get it.
+
+5.Because current JDK does not include javafx api , so you should choose the right jdk.
 
